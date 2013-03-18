@@ -1,0 +1,141 @@
+/**
+ * Author : BEN OUIREN Farid
+ * email : crogun@gmail.com
+ * Date :2013-03-16
+ * Licence : Creative Commons 
+ * The licensor permits others to copy, distribute, display, and perform the work. In return, licenses must give the original author credit.
+ * 
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TestORMSQlite.WinRTF
+{
+    /// <summary>
+    /// this class help you to create a table in a document.
+    /// it generate the code for print a table in a RTFPage. 
+    /// </summary>
+    public class RTFTable
+    {
+        private FormatText ft = new FormatText();
+        private string hr;
+        private int nbcol = 0;
+        private List<string> rows = new List<string>();
+
+        /// <summary>
+        /// create a new Table with a header represented by the string list headerTable
+        /// </summary>
+        /// <param name="headerTable"> a string list which represent the header table. It comput the columns number too.
+        /// columns number = headerTable.Count
+        /// </param>
+        public RTFTable(List<String> headerTable)
+        {
+
+            hr = @"\trowd\trgaph144";
+            int x = 1;
+            nbcol = headerTable.Count;
+            int cellSize = 10000 / nbcol;
+            foreach (var item in headerTable)
+            {
+                hr += @"\clbrdrt\brdrs\clbrdrl\brdrs\clbrdrb\brdrs\clbrdrr\brdrs";
+                hr += @"\cellx" + (x * cellSize);
+                x ++;
+            }
+
+            this.addRow(ft.formatTableHeader(this.formatRow(headerTable)));
+            
+        }
+        /// <summary>
+        /// create a new Table without header. this table will have col number of columns
+        /// </summary>
+        /// <param name="col"> an integer who represent the number of columns of your current table.
+        /// columns number = headerTable.Count
+        /// </param>
+        public RTFTable(int col)
+        {
+            hr = @"\trowd\trgaph144";
+            int x = 1;
+            nbcol = col;
+            int cellSize = 10000 / nbcol;
+            for (; x <= nbcol; x++)
+            {
+                hr += @"\clbrdrt\brdrs\clbrdrl\brdrs\clbrdrb\brdrs\clbrdrr\brdrs";
+                hr += @"\cellx" + (x * cellSize);
+                
+            }
+        }
+
+        /// <summary>
+        /// add a row in your table
+        /// </summary>
+        /// <param name="row">the rtf code of a row</param>
+        public void addRow(string row)
+        {
+            rows.Add(row);
+        }
+
+        /// <summary>
+        /// surcharge method to add a row with a list of string.
+        /// see details in formatRow.
+        /// </summary>
+        /// <param name="row"></param>
+        public void addRow(List<string> row)
+        {
+            this.formatRow(row);
+        }
+
+
+        /// <summary>
+        /// represent the rtf code of your table.
+        /// </summary>
+        /// <returns></returns>
+        public string formatTable()
+        {
+            string res = "{" + hr;
+
+            foreach (var item in rows)
+            {
+                res += item + @"\row";
+            }
+
+            res+= "}";
+            return res;
+        }
+
+        /// <summary>
+        /// format a row in a rtf format. each string in the list represent a cell of your row.
+        /// If cells.Count > columns number , add only the cell cells(i) where i inferior a columns number
+        /// If cells.Count < columns numbers, add an empty cell for strinh missing
+        /// </summary>
+        /// <param name="cells"></param>
+        /// <returns></returns>
+        public string formatRow(List<string> cells)
+        {
+
+            string res = "";
+
+            int nbcells = 0;
+
+            foreach (var item in cells)
+            {
+                res += " "+item +@"\intbl\cell";
+                nbcells++;
+                if (nbcells == nbcol)
+                    break;
+            }
+
+            for (; nbcells < nbcol; nbcells++)
+            {
+                res += @" \intbl\cell ";
+            }
+
+            return res;
+        }
+
+
+    }
+}
