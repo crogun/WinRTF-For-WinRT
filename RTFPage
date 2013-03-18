@@ -1,0 +1,84 @@
+/**
+ * Author : BEN OUIREN Farid
+ * Date :2013-03-16
+ * email : crogun@gmail.com
+ * Licence : Creative Commons 
+ * The licensor permits others to copy, distribute, display, and perform the work. In return, licenses must give the original author credit.
+ * 
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TestORMSQlite.WinRTF
+{
+    /// <summary>
+    /// represent a sample page in rtf code format.
+    /// </summary>
+    public class RTFPage
+    {
+        private FormatText formater = new FormatText();
+        private string header = "";
+
+        private string title = "";
+
+        private string footer = "";
+
+        private string content = "";
+
+
+        /// <summary>
+        /// acces in Read / Write at current page Header   Property
+        /// </summary>
+        public string Header
+        {
+            get
+            {
+                return header;
+            }
+            set { header = formater.formatHeader(value); }
+        }
+
+        /// <summary>
+        /// acces in Read / Write at current page Title   Property
+        /// </summary>
+        public string Title
+        {
+            get { return title; }
+            set { title = formater.formatTitle(value); }
+        }
+
+        /// <summary>
+        /// acces in Read / Write at current page Footer   Property
+        /// </summary>
+        public string Footer
+        {
+            get { return footer; }
+            set { footer = formater.formatFooter(value); }
+        }
+
+        /// <summary>
+        /// acces in Read / Write at current page Content   Property
+        /// </summary>
+        public string Content
+        {
+            get { return content; }
+            set { content = formater.formatContent(value); }
+        }
+
+        /// <summary>
+        /// format the the content of your text in rtf code format.
+        /// </summary>
+        /// <returns></returns>
+        public string formatContent()
+        {
+            return " " + Header + @" " + Title + " " + Content + @" \qc" + Footer;
+        }
+
+
+
+    }
+}
