@@ -1,0 +1,161 @@
+/**
+ * Author : BEN OUIREN Farid
+ * Date :2013-03-16
+ * email : crogun@gmail.com
+ * Licence : Creative Commons 
+ * The licensor permits others to copy, distribute, display, and perform the work. In return, licenses must give the original author credit.
+ * 
+ */
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Windows.Storage;
+
+namespace TestORMSQlite.WinRTF
+{
+    /// <summary>
+    /// an example to make produce a document.
+    /// </summary>
+    public class StrategieProductionRTF : IStrategieProductionSortie
+    {
+        private string folder;
+        private string file;
+        private RTFCreator document;
+        private bool error = false;
+        private FormatText formater = new FormatText();
+
+
+        public bool makeProduct(string folderName, string fileName)
+        {
+
+            this.folder = folderName;
+            this.file = fileName;
+            document = new RTFCreator();
+            document.Header = GeneralContentText.GardeHeader;
+            document.Title = GeneralContentText.GardeTitle + "Created By Crogun";
+            document.Content = GeneralContentText.GardeContent + ProductionOption.ContentEmargement;
+            document.Footer = GeneralContentText.GardeFooter;
+
+            
+            computePrintPageTest();
+
+            productTest();
+
+            return !error;
+        }
+        /// <summary>
+        /// An example of page creater for a document.
+        /// </summary>
+        private void computePrintPageTest()
+        {
+            RTFPage p1 = new RTFPage();
+            p1.Content = GeneralContentText.ConvocationContent;
+            p1.Footer = GeneralContentText.ConvocationFooter;
+            p1.Header = GeneralContentText.ConvocationHeader;
+            p1.Title = GeneralContentText.ConvocationTitle;
+
+            RTFPage p2 = new RTFPage();
+
+            RTFTable table1 = new RTFTable(headerTableExemple());
+            table1.addRow(rowTableExemple());
+            table1.addRow(rowTableExemple());
+            p2.Title = GeneralContentText.ListeAppelTitle;
+
+            p2.Content = table1.formatTable();
+            document.addPage(p1);
+            document.addPage(p2);
+        }
+
+        private List<string> headerTableExemple()
+        {
+            List<string> hr = new List<string>();
+            hr.Add("Column1");
+            hr.Add("Column2");
+            hr.Add("Column3");
+            hr.Add("Column4");
+
+            return hr;
+        }
+
+        private List<string> rowTableExemple()
+        {
+            List<string> hr = new List<string>();
+            hr.Add("just");
+            hr.Add("enjoy");
+            hr.Add("my");
+            hr.Add("example");
+            return hr;
+        }
+        
+
+        private async void productTest()
+        {
+            error = false;
+            string date = FormatDateTime.Instance.formatDay(DateTime.Now);
+            var _Name = file + "_" + date + ".rtf";
+            try
+            {
+
+
+                var _Folder = Windows.Storage.KnownFolders.DocumentsLibrary;
+                var _Option = Windows.Storage.CreationCollisionOption.ReplaceExisting;
+
+                StorageFolder storageFolder = null;
+                try
+                {
+                    storageFolder = await _Folder.GetFolderAsync(folder);
+                }
+                catch
+                {
+
+                }
+                if (storageFolder == null)
+                    storageFolder = await _Folder.CreateFolderAsync(folder, _Option);
+
+                // create file 
+                var _File = await storageFolder.CreateFileAsync(_Name, _Option);
+
+                // write content
+                var _WriteThis = document.formatContent();
+                await Windows.Storage.FileIO.WriteTextAsync(_File, _WriteThis);
+
+                // acquire file
+
+                _File = await _Folder.GetFileAsync(_Name);
+            }
+            catch
+            {
+                error = true;
+            }
+
+            if (error)
+            {
+                try
+                {
+                    await new Windows.UI.Popups.MessageDialog("Impossible de créer le fichier " + _Name + ". Assurez vous que celui ci ne soit pas déjà ouvert.").ShowAsync();
+                }
+                catch { }
+            }
+            else
+            {
+                
+                try
+                {
+                    await new Windows.UI.Popups.MessageDialog("File " + _Name + " created with succes.").ShowAsync();
+
+                }
+                catch {  }
+
+
+            }
+        }
+
+
+
+       
+    }
+}
