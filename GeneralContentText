@@ -1,0 +1,116 @@
+/**
+ * Author : BEN OUIREN Farid
+ * Date :2013-03-16
+ * email : crogun@gmail.com
+ * Licence : Creative Commons 
+ * The licensor permits others to copy, distribute, display, and perform the work. In return, licenses must give the original author credit.
+ * 
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TestORMSQlite.WinRTF
+{
+    /// <summary>
+    /// this class centralise standard text for your document.
+    /// </summary>
+    public class GeneralContentText
+    {
+        /// <summary>
+        /// this is a general header, how allow you to have a beautifull layout compatible with word.
+        /// </summary>
+        public static readonly String GENERALHEADER = @"{\headerl \ltrpar \pard\plain \ltrpar\s15\ql \li0\ri0\sa200\sl276\slmult1\widctlpar\tqc\tx4536\tqr\tx9072\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \rtlch\fcs1 
+\af0\afs22\alang1025 \ltrch\fcs0 \fs22\lang1036\langfe1036\loch\af31506\hich\af31506\dbch\af31505\cgrid\langnp1036\langfenp1036 {\rtlch\fcs1 \af0 \ltrch\fcs0 \insrsid10300736 
+\par }}{\headerr \ltrpar \pard\plain \ltrpar\qr \li-540\ri-630\sa200\sl276\slmult1\widctlpar\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin-630\lin-540\itap0 \rtlch\fcs1 \af0\afs22\alang1025 \ltrch\fcs0 
+\fs22\lang1036\langfe1036\loch\af31506\hich\af31506\dbch\af31505\cgrid\langnp1036\langfenp1036 {\rtlch\fcs1 \af0\afs18 \ltrch\fcs0 \f36\fs18\insrsid10300736 \hich\af36\dbch\af31505\loch\f36 Rapport WinRTF }{\rtlch\fcs1 \af0\afs18 \ltrch\fcs0 
+\f36\fs18\insrsid11740701\charrsid11740701 \hich\af36\dbch\af31505\loch\f36 | }{\rtlch\fcs1 \af0\afs18 \ltrch\fcs0 \f36\fs18\lang1033\langfe1036\langnp1033\insrsid11740701 \hich\af36\dbch\af31505\loch\f36 "+FormatDateTime.Instance.formatDay(DateTime.Now) + @"}{\rtlch\fcs1 \af0 \ltrch\fcs0 
+\insrsid11740701 \tab }{\field{\*\fldinst {\rtlch\fcs1 \af0 \ltrch\fcs0 \insrsid11740701 \hich\af31506\dbch\af31505\loch\f31506 }}{\fldrslt {\rtlch\fcs1 \af0\afs28 \ltrch\fcs0 
+\f36\fs28\cf17\lang1024\langfe1024\noproof\insrsid10300736\charrsid10300736 \hich\af36\dbch\af31505\loch\f36 1}}}\sectd \ltrsect\linex0\endnhere\sectdefaultcl\sftnbj {\rtlch\fcs1 \af0\afs18 \ltrch\fcs0 \f36\fs18\insrsid11740701\charrsid11740701 
+\par }\pard\plain \ltrpar\s15\ql \li0\ri0\sa200\sl276\slmult1\widctlpar\tqc\tx4536\tqr\tx9072\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \rtlch\fcs1 \af0\afs22\alang1025 \ltrch\fcs0 
+\fs22\lang1036\langfe1036\loch\af31506\hich\af31506\dbch\af31505\cgrid\langnp1036\langfenp1036 {\rtlch\fcs1 \af0 \ltrch\fcs0 \lang1024\langfe1024\noproof\insrsid7365632 
+{\shp{\*\shpinst\shpleft0\shptop0\shpright11223\shpbottom14857\shpfhdr0\shpbxpage\shpbxignore\shpbypage\shpbyignore\shpwr3\shpwrk0\shpfblwtxt0\shpz0\shplid2049{\sp{\sn shapeType}{\sv 2}}{\sp{\sn fFlipH}{\sv 0}}{\sp{\sn fFlipV}{\sv 0}}
+{\sp{\sn fLockRotation}{\sv 0}}{\sp{\sn fLockAspectRatio}{\sv 0}}{\sp{\sn fLockPosition}{\sv 0}}{\sp{\sn fLockAgainstSelect}{\sv 0}}{\sp{\sn fLockVerticies}{\sv 0}}{\sp{\sn fLockText}{\sv 0}}{\sp{\sn fLockAdjustHandles}{\sv 0}}
+{\sp{\sn fLockAgainstGrouping}{\sv 0}}{\sp{\sn fRotateText}{\sv 0}}{\sp{\sn fFitShapeToText}{\sv 0}}{\sp{\sn adjustValue}{\sv 869}}{\sp{\sn fillColor}{\sv 0}}{\sp{\sn fFilled}{\sv 0}}{\sp{\sn lineWidth}{\sv 12700}}{\sp{\sn fArrowheadsOK}{\sv 0}}
+{\sp{\sn fLine}{\sv 1}}{\sp{\sn fLockShapeType}{\sv 0}}{\sp{\sn wzName}{\sv AutoShape 10}}{\sp{\sn posh}{\sv 2}}{\sp{\sn posrelh}{\sv 1}}{\sp{\sn posv}{\sv 2}}{\sp{\sn posrelv}{\sv 1}}{\sp{\sn metroBlob}{\sv {\*\svb 
+504b030414000600080000002100b6833892fe000000e1010000130000005b436f6e74656e745f54797065735d2e786d6c9491414ec3301045f748dcc1f216254ebb400825e982b44b40a81c60644f128b646c794c686f8f93b61b449158da33ffbf27bbdc1cc6414c18d83aaae42a2fa440d2ce58ea2af9bedf650f527004
+323038c24a1e91e5a6bebd29f7478f2c529ab8927d8cfe5129d63d8ec0b9f34869d2ba30424cc7d0290ffa033a54eba2b857da51448a599c3b645d36d8c2e710c5f690ae4f26010796e2e9b438b32a09de0f56434ca66a22f383929d09794a2e3bdc5bcf774943aa5f09f3e43ae09c7b494f13ac41f10a213ec398349409ac
+70ed1aa7f3bf3b66c99133d7b65663de04de2ea98bd3b56ee3be28e0f4dff226c5de70bab4abe583ea6f000000ffff0300504b03041400060008000000210038fd21ffd6000000940100000b0000005f72656c732f2e72656c73a490c16ac3300c86ef83bd83d17d719ac318a34e2fa3d06be91ec0d88a631a5b4632d9faf6
+3383c1327adb51bfd0f7897f7ff84c8b5a91255236b0eb7a50981df9988381f7cbf1e90594549bbd5d28a3811b0a1cc6c787fd19175bdb91ccb1886a942c06e65acbabd6e2664c563a2a98db66224eb6b691832ed65d6d403df4fdb3e6df0c18374c75f206f8e40750975b69e63fec141d93d0543b4749d33445778faa3d7d
+e433ae8d62396035e059be43c6b56bcf81beefddfdd31bd89639ba23db846fe4b67e1ca8653f7abde972fc020000ffff0300504b030414000600080000002100abb3798fb10200006b0500000e0000006472732f65326f446f632e786d6cac546d6fda3010fe3e69ffc1f2779a970628514355119826755bb5763fc0c40ec9
+e6d8996d0874da7fdff912286c5fa6697c08679ffddc3dcfddf9f66edf48b213c6d65a6534ba0a2911aad0bc569b8c7e795e8d6e28b18e29cea45622a30761e9ddfced9bdbae4d45ac2b2db9300440944dbb36a395736d1a04b6a844c3ec956e850267a94dc31c2ccd26e0867580dec8200ec349d069c35ba30b612dece6bd
+93ce11bf2c45e13e95a5158ec88c426e0ebf06bf6bff0de6b72cdd18d6567531a4c1fe218b86d50a829ea072e618d99afa0fa8a62e8cb6ba7457856e025d9675219003b089c2dfd83c55ac15c805c4b1ed4926fbff608b8fbb47436a0eb58b2851ac811add6f9dc6d0244281bad6a670eea97d349ea26d1f74f1cd12a51715
+531b716f8cee2ac138a4157941838b0b7e61e12a59771f34077806f0a8d5be348d070415c81e4b72389544ec1d2960731ac5934938a6a400df2cb94ea2d91863b0f478bd35d6bd13ba21dec8a8d15bc53f43e13106db3d588785e1033bc6bf52523612cabc639224617c3d000e6703961e21fd45a557b594d82752910e38c6
+d3304470ab65cdbd176539d885340430330a0dca75f70c242891cc3a700033fce145b96d408bfe6cd46ff701b60db46bbf8fd2432e1671415530cfe3214fbce5b55f2a8eb663b5ec6d382f954f0cb21834f0a26253fe9885b3e5cdf2261925f164394ac23c1fddaf16c968b28aa6e3fc3a5f2cf2e8a74f354ad2aae65c284f
+f3382051f2770d388c6adfdaa711b96061cd667d926d5008885c920d2ed340377039fe233b6c3adf677ef46dbad6fc003d67743ff1f042815169f3424907d39e51fb7dcb8c80f2bc57d0b7b32849fcf3808b643c8d6161ce3deb730f5305406514aadb9b0bd73f29dbd6d49b0a22455866a5fd2895b5f38c5eb31a1630d1c8
+60787dfc9371bec653af6fe4fc17000000ffff0300504b030414000600080000002100da6e7e2cde000000070100000f0000006472732f646f776e7265762e786d6c4c8fc14ec3301044ef48fc83b595b851272185368d53a14a5c10aa4aa17727de3a51e37514bb49e0eb71b9c06535ab59cdbccd379369d980bd6b2c0988
+e71130a4caaa86b480cf8f97fb2530e72529d95a42015fe86053dcdee4325376a4771c0e5eb310422e93026aefbb8c7357d568a49bdb0e297827db1be9c3da6bae7a398670d3f2248a1eb9910d85865a76b8adb13a1f2e46c0fe9c6abb3a6e87d7f1bbd469f3b6dfade25188bbd9f4bc06e671f27fc770c50fe85004a6d25e
+4839d60a088ff8df79f5e22479005606952e174fc08b9cffe72f7e000000ffff0300504b01022d0014000600080000002100b6833892fe000000e10100001300000000000000000000000000000000005b436f6e74656e745f54797065735d2e786d6c504b01022d001400060008000000210038fd21ffd600000094010000
+0b000000000000000000000000002f0100005f72656c732f2e72656c73504b01022d0014000600080000002100abb3798fb10200006b0500000e000000000000000000000000002e0200006472732f65326f446f632e786d6c504b01022d0014000600080000002100da6e7e2cde000000070100000f000000000000000000
+000000000b0500006472732f646f776e7265762e786d6c504b05060000000004000400f3000000160600000000}}}{\sp{\sn dhgt}{\sv 251658240}}{\sp{\sn fLayoutInCell}{\sv 0}}{\sp{\sn fAllowOverlap}{\sv 1}}
+{\sp{\sn fBehindDocument}{\sv 0}}{\sp{\sn fHidden}{\sv 0}}{\sp{\sn pctHoriz}{\sv 920}}{\sp{\sn pctVert}{\sv 940}}{\sp{\sn fLayoutInCell}{\sv 0}}}{\shprslt{\*\do\dobxpage\dobypage\dodhgt8192\dppolygon\dppolycount20\dpptx452\dppty0\dpptx273\dppty47
+\dpptx131\dppty173\dpptx36\dppty362\dpptx0\dppty598\dpptx0\dppty19070\dpptx36\dppty19306\dpptx131\dppty19494\dpptx273\dppty19620\dpptx452\dppty19668\dpptx10774\dppty19668\dpptx10952\dppty19620\dpptx11095\dppty19494\dpptx11190\dppty19306
+\dpptx11226\dppty19070\dpptx11226\dppty598\dpptx11190\dppty362\dpptx11095\dppty173\dpptx10952\dppty47\dpptx10774\dppty0\dpx0\dpy0\dpxsize11223\dpysize14857
+\dpfillfgcr255\dpfillfgcg255\dpfillfgcb255\dpfillbgcr0\dpfillbgcg0\dpfillbgcb0\dpfillpat0\dplinew20\dplinecor0\dplinecog0\dplinecob0}}}}{\rtlch\fcs1 \af0 \ltrch\fcs0 \insrsid11740701 
+\par }}{\footerl \ltrpar \pard\plain \ltrpar\s15\ql \li0\ri0\sa200\sl276\slmult1\widctlpar\tqc\tx4536\tqr\tx9072\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \rtlch\fcs1 \af31507\afs22\alang1025 \ltrch\fcs0 
+\fs22\lang1036\langfe1036\loch\af31506\hich\af31506\dbch\af31505\cgrid\langnp1036\langfenp1036 {\rtlch\fcs1 \af31507 \ltrch\fcs0 \insrsid8281268 
+\par }}{\footerr \ltrpar \pard\plain \ltrpar\s15\qr \li0\ri0\sa200\sl276\slmult1\widctlpar\brdrt\brdrs\brdrw60\brsp100\brdrcf17 \tqc\tx4536\tqr\tx9072\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\rtlgutter\itap0\pararsid8281268 \rtlch\fcs1 
+\af31507\afs22\alang1025 \ltrch\fcs0 \fs22\lang1036\langfe1036\loch\af31506\hich\af31506\dbch\af31505\cgrid\langnp1036\langfenp1036 {\rtlch\fcs1 \ai\af31507 \ltrch\fcs0 \i\insrsid8281268\charrsid8281268 }{\rtlch\fcs1 \ai\af31507 \ltrch\fcs0 
+\i\insrsid8281268 \hich\af31506\dbch\af31505\loch\f31506 Powered By TA2013 ©}{\rtlch\fcs1 \ai\af31507 \ltrch\fcs0 \i\insrsid8281268\charrsid8281268 }{\rtlch\fcs1 \ai\af31507 \ltrch\fcs0 \i\cf18\insrsid8281268\charrsid8281268 
+\par }\pard \ltrpar\s15\ql \li0\ri0\sa200\sl276\slmult1\widctlpar\tqc\tx4536\tqr\tx9072\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 {\rtlch\fcs1 \af31507 \ltrch\fcs0 \insrsid8281268 
+\par }}{\headerf \ltrpar \pard\plain \ltrpar\s17\ql \li0\ri0\sa200\sl276\slmult1\widctlpar\tqc\tx4536\tqr\tx9072\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \rtlch\fcs1 \af31507\afs22\alang1025 \ltrch\fcs0 
+\fs22\lang1036\langfe1036\loch\af31506\hich\af31506\dbch\af31505\cgrid\langnp1036\langfenp1036 {\rtlch\fcs1 \af31507 \ltrch\fcs0 \insrsid8281268 
+\par }}{\footerf \ltrpar \pard\plain \ltrpar\s15\ql \li0\ri0\sa200\sl276\slmult1\widctlpar\tqc\tx4536\tqr\tx9072\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \rtlch\fcs1 \af31507\afs22\alang1025 \ltrch\fcs0 
+\fs22\lang1036\langfe1036\loch\af31506\hich\af31506\dbch\af31505\cgrid\langnp1036\langfenp1036 {\rtlch\fcs1 \af31507 \ltrch\fcs0 \insrsid8281268 
+\par }}";
+
+
+
+        public static readonly String GENERALFOOTER = @"{\rtlch\fcs1 \af0 \ltrch\fcs0 \insrsid7364287 \hich\af31506\dbch\af31505\loch\f31506 Powered By Farid
+\par }\pard\plain \ltrpar\s19\qr \li0\ri0\sa180\sl264\slmult1\widctlpar\brdrt\brdrs\brdrw10\brsp20\brdrcf17 \wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\rtlgutter\itap0 \rtlch\fcs1 \af0\afs23\alang1025 \ltrch\fcs0 
+\fs20\cf18\lang1036\langfe1036\loch\af31506\hich\af31506\dbch\af31505\cgrid\langnp1036\langfenp1036 {\rtlch\fcs1 \af0 \ltrch\fcs0 \insrsid7364287 \hich\af31506\dbch\af31505\loch\f31506 Page }{\field{\*\fldinst {\rtlch\fcs1 \af0 \ltrch\fcs0 
+\insrsid7364287 \hich\af31506\dbch\af31505\loch\f31506 PAGE   \\* MERGEFORMAT}}";
+
+        public static readonly String GardeHeader = @" \par Autor : BEN OUIREN Farid \line Enterprise : CapGemini \line email : crogun@gmail.com " ; 
+        public static readonly String GardeTitle = @" \par EXAMPLE RTF ";
+        public static readonly String GardeContent = @" \par \par\par\par  \par }\pard \ltrpar\qr \li0\ri0\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0 {\rtlch\fcs1 \af0\afs28 \ltrch\fcs0 \f0\fs28\insrsid7757748\charrsid818954 \hich\af0\dbch\af31505\loch\f0 \hich\f0 You're using a Free Librairy How help you to produce à Word's compatible document For WinRT. ";
+        public static readonly String GardeFooter = @"\par\par\par Powered By Crogun Corporation © ";
+
+        public static readonly String ConvocationHeader = @" \par University Of UPMC \line 28 rue Turbigot \line Paris 75005 ";
+        public static readonly String ConvocationFooter = @" \par\par\par A text Example.\par\par \li5 my signature !";
+        public static readonly String ConvocationContent = @" \par\par  Hellow welcome To WinRTF, this is a free librairy to compute Word Compatible document... it's easy to use, open source and free. ";
+        public static readonly String ConvocationTitle = @" \par READ ME By CROGUN Corporation ©";
+
+        public static readonly String EmargementHeader = "";
+        public static readonly String EmargementFooter = "";
+        public static readonly String EmargementContent = "";
+        public static readonly String EmargementTitle = @"Your first Title kind ";
+
+        public static readonly String ListeAppelHeader = "";
+        public static readonly String ListeAppelFooter = "";
+        public static readonly String ListeAppelTitle = @"Your Second Title Kind, an excuse to give you a table ";
+        public static readonly String ListeAppelContent = "";
+
+
+
+        public static readonly String planningSurveillancesSalleEpreuveHeader = "";
+        public static readonly String planningSurveillancesSalleEpreuveFooter = "";
+        public static readonly String planningSurveillancesSalleEpreuveTitle = @"An other  Title juste for example";
+        public static readonly String planningSurveillancesSalleEpreuveContent = "";
+
+
+        public static readonly String EtiquetteHeader = "";
+        public static readonly String EtiquetteFooter = "";
+        public static readonly String EtiquetteTitle = @"Does it make you Happy ?";
+        public static readonly String EtiquetteContent = "";
+
+        public static readonly String PlanningSurveillantHeader = "";
+        public static readonly String PlanningSurveillantFooter = "";
+        public static readonly String PlanningSurveillantTitle = @"Enjoy your self and add other kind of GENERALCONTENT, or you can always change this one";
+        public static readonly String PlanningSurveillantContent = "";
+
+
+    }
+}
