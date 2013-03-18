@@ -1,0 +1,107 @@
+/**
+ * Author : BEN OUIREN Farid
+ * Date :2013-03-16
+ * email : crogun@gmail.com
+ * Licence : Creative Commons 
+ * The licensor permits others to copy, distribute, display, and perform the work. In return, licenses must give the original author credit.
+ * 
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TestORMSQlite.WinRTF
+{
+    /// <summary>
+    /// you can make here some production option.
+    /// </summary>
+    public class ProductionOption
+    {
+        private FormatText formater = new FormatText();
+
+
+        private static bool printConvocationEtudiant;
+
+        public static bool PrintConvocationEtudiant
+        {
+            get { return printConvocationEtudiant; }
+            set { printConvocationEtudiant = value; }
+        }
+
+        private static bool printFeuilleEmargement;
+
+        public static bool PrintFeuilleEmargement
+        {
+            get { return printFeuilleEmargement; }
+            set { printFeuilleEmargement = value; }
+        }
+
+        private static bool printListeAppel;
+
+        public static bool PrintListeAppel
+        {
+            get { return printListeAppel; }
+            set { printListeAppel = value; }
+        }
+
+        private static bool printEtiquettes;
+
+        public static bool PrintEtiquettes
+        {
+            get { return printEtiquettes; }
+            set { printEtiquettes = value; }
+        }
+
+        private static bool printPlanningSurveillancesSalleEpreuve;
+
+        public static bool PrintPlanningSurveillancesSalleEpreuve
+        {
+            get { return printPlanningSurveillancesSalleEpreuve; }
+            set { printPlanningSurveillancesSalleEpreuve = value; }
+        }
+
+        private static bool printPlanningSurveillant;
+
+        public static bool PrintPlanningSurveillant
+        {
+            get { return printPlanningSurveillant; }
+            set { printPlanningSurveillant = value; }
+        }
+
+
+
+        public static string ContentEmargement
+        {
+            get
+            {
+                FormatText f = new FormatText();
+                string content = @"\par {\listtext\pard\plain\ltrpar \rtlch\fcs1 \af0\afs28 \ltrch\fcs0 \f3\fs28\insrsid7163344\charrsid818954 \loch\af3\dbch\af31505\hich\f3 \'b7\tab}}\pard \ltrpar\ql \fi-360\li720\ri0\nowidctlpar\wrapdefault\faauto\ls2\rin0\lin720\itap0\pararsid7163344 {
+\rtlch\fcs1 \af0\afs28 \ltrch\fcs0 \f0\fs28\insrsid7163344\charrsid818954 \hich\af0\dbch\af31505\loch\f0 Contenu du document : }{\rtlch\fcs1 \af0\afs28 \ltrch\fcs0 \f0\fs28\insrsid7757748\charrsid818954  ";
+
+                if (printConvocationEtudiant)
+                    content += f.formatLineList("-Convocations");
+                if (printEtiquettes)
+                    content += f.formatLineList("-Feuilles d'etiquettes");
+                if (printFeuilleEmargement)
+                    content += f.formatLineList("-Feuille d'emargement");
+                if (printListeAppel)
+                    content += f.formatLineList("-Liste d'appel");
+                if (printPlanningSurveillant)
+                    content += f.formatLineList("-Planning des surveillants");
+                if (printPlanningSurveillancesSalleEpreuve)
+                    content += f.formatLineList("-Planning des surveillances par Epreuve et par Salle");
+
+               content += @"\par }\pard \ltrpar\qr \li0\ri0\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0 {\rtlch\fcs1 \af0\afs16 \ltrch\fcs0 \f0\fs16\insrsid7163344 
+            \par ";
+
+                return content;
+            }
+
+        }
+
+
+    }
+}
