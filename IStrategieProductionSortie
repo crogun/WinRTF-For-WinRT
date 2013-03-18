@@ -1,0 +1,32 @@
+/**
+ * Author : BEN OUIREN Farid
+ * Date :2013-03-16
+ * email : crogun@gmail.com
+ * Licence : Creative Commons 
+ * The licensor permits others to copy, distribute, display, and perform the work. In return, licenses must give the original author credit.
+ * 
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace TestORMSQlite.WinRTF
+
+{
+    public interface IStrategieProductionSortie
+    {
+
+        /// <summary>
+        /// Compute the production of all your page that you need
+        /// the document will be produce in /document/foldername
+        /// </summary>
+        /// <returns>
+        /// return true if the production is succesfull
+        /// </returns>
+        bool makeProduct(string folderName , string fileName);
+    }
+}
