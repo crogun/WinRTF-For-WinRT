@@ -1,0 +1,166 @@
+/**
+ * Author : BEN OUIREN Farid
+ * Date :2013-03-16
+ * email : crogun@gmail.com
+ * Licence : Creative Commons 
+ * The licensor permits others to copy, distribute, display, and perform the work. In return, licenses must give the original author credit.
+ * 
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TestORMSQlite.WinRTF
+{
+    /// <summary>
+    /// This class centralize all pages of your document.
+    /// Here you will fine the content of the homepage
+    /// This class allow you to add / remove some page at your document.
+    /// </summary>
+    public class RTFCreator
+    {
+        private FormatText formater = new FormatText();
+        private List<RTFPage> pages = new List<RTFPage>();
+        private string top = @"{\rtf1\adeflang1025\ansi\ansicpg1252\uc1\adeff31507\deff0\stshfdbch31505\stshfloch31506\stshfhich31506\stshfbi31507\deflang1036\deflangfe1036\themelang1036\themelangfe0\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f34\fbidi \froman\fcharset0\fprq2{\*\panose 02040503050406030204}Cambria Math;}
+{\f37\fbidi \fswiss\fcharset0\fprq2{\*\panose 020f0502020204030204}Calibri;}{\f39\fbidi \fnil\fcharset0\fprq0{\*\panose 00000000000000000000}   ;}{\f40\fbidi \fnil\fcharset0\fprq0{\*\panose 00000000000000000000}Bitstream Charter;}
+{\flomajor\f31500\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\fdbmajor\f31501\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}
+{\fhimajor\f31502\fbidi \froman\fcharset0\fprq2{\*\panose 02040503050406030204}Cambria;}{\fbimajor\f31503\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}
+{\flominor\f31504\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\fdbminor\f31505\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}}";
+
+        private string bottom = "}";
+
+        private string header = "";
+
+        private string title = "";
+
+        private string footer = "";
+
+        private string content = "";
+
+
+        /// <summary>
+        /// acces in Read / Write at Header  homepage Property
+        /// </summary>
+        public string Header
+        {
+            get
+            {
+                return header;
+            }
+            set { header = formater.formatHeader( value); }
+        }
+
+        /// <summary>
+        /// acces in Read / Write at Title homepage Property
+        /// </summary>
+        public string Title
+        {
+            get { return title; }
+            set { title = formater.formatTitle(value); }
+        }
+
+        /// <summary>
+        /// acces in Read / Write at Footer homepage Property
+        /// </summary>
+        public string Footer
+        {
+            get{return footer; }
+            set { footer = formater.formatFooter(value); }
+        }
+
+        /// <summary>
+        /// acces in Read / Write at Content homepage Property
+        /// </summary>
+        public string Content
+        {
+            get { return content; }
+            set { content = formater.formatContent( value); }
+        }
+
+
+        public RTFCreator()
+        {
+
+        }
+
+        /// <summary>
+        /// allow you to add a page in your document.
+        /// the page is added in the end of the document.
+        /// </summary>
+        /// <param name="page"> the page to add.</param>
+        public void addPage(RTFPage page)
+        {
+            pages.Add(page);
+        }
+
+        /// <summary>
+        /// allow you to remove a page in your document
+        /// </summary>
+        /// <param name="page"></param>
+        public void removePage(RTFPage page)
+        {
+            pages.Remove(page);
+        }
+
+        /// <summary>
+        /// get All pages of your document except the homepage
+        /// </summary>
+        /// <returns>return a RTFPage list represent all pages of your document.</returns>
+        public List<RTFPage> getPages()
+        {
+            return pages;
+        }
+
+        /// <summary>
+        /// format content for your document.
+        /// </summary>
+        /// <returns>return a string which represent the rtf code of your document. </returns>
+        public string formatContent()
+        {
+            string res = top + " " + Header + @" " + Title+ " " + Content + @" \qc" + Footer  ;
+
+
+            foreach (RTFPage page in pages)
+            {
+                res += @" \page" + GeneralContentText.GENERALHEADER+ page.formatContent() /*+ GeneralContentText.GENERALFOOTER */;
+            }
+
+            res += bottom;
+            
+            
+            return encodeContent( res);
+            //return top + " " + Header + @" " + Title+ " " + Content + @" \qc" + Footer + " " + bottom;
+        }
+
+        /// <summary>
+        /// allo you to format some special caratere. You can enrich this par if you want print an other charactere.
+        /// </summary>
+        /// <param name="res"></param>
+        /// <returns></returns>
+        public string encodeContent(string res)
+        {
+            res = res.Replace("é", "\\'e9");
+            res = res.Replace("è", "\\'e8");
+            res = res.Replace("à", "\\'e0");
+            res = res.Replace("ù", "\\'f9");
+            res = res.Replace("ê", "\\'ea");
+            res = res.Replace("ë", "\\'eb");
+            res = res.Replace("ï", "\\'ef");
+            res = res.Replace("©", "\\'a9");
+            res = res.Replace("°", "\\'b0");
+
+            return res;
+        }
+        /// <summary>
+        /// add all page of a RTFPage list in the document.
+        /// </summary>
+        /// <param name="list"> RTFPage list</param>
+        public  void addAllPages(List<RTFPage> list)
+        {
+            pages.AddRange(list);
+        }
+    }
+}
