@@ -85,7 +85,7 @@ namespace TestORMSQlite.WinRTF
         /// <param name="row"></param>
         public void addRow(List<string> row)
         {
-            this.formatRow(row);
+             this.addRow(ft.formatTableRow(this.formatRow(row)));
         }
 
 
